@@ -56,6 +56,10 @@ moon run cmd/main -- --json
 moon run cmd/main -- --csv
 moon run cmd/main -- --quality --json
 moon run cmd/main -- --profiles --csv
+moon run cmd/main -- --bounds --json
+moon run cmd/main -- --resample 12
+moon run cmd/main -- --batch --profile strict-ci --csv
+moon run cmd/main -- --junit
 moon run examples/basic
 ```
 
@@ -92,6 +96,10 @@ moon run cmd/main -- --profile unity
 moon run cmd/main -- --profile blender --json
 moon run cmd/main -- --profile strict-ci --csv
 moon run cmd/main -- --profiles
+moon run cmd/main -- --bounds --json
+moon run cmd/main -- --resample 12
+moon run cmd/main -- --batch --profile strict-ci --json
+moon run cmd/main -- --junit
 moon run cmd/main -- --help
 ```
 

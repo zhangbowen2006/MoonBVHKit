@@ -282,7 +282,7 @@ pub fn quality_report_to_junit_xml(
   if report.signals.length() == 0 {
     cases.push(
       (
-        $|<testcase name="quality" classname="moonbvhkit.quality"/>,
+        $|<testcase name="quality" classname="moonbvhkit.quality"/>
       ),
     )
   } else {

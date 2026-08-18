@@ -1,6 +1,7 @@
 import {
   "zhangbowen2006/moonbvhkit",
   "moonbitlang/core/env",
+  "moonbitlang/core/string",
 }
 
 pkgtype(kind: "executable")

@@ -6,6 +6,7 @@
 - Added deterministic nearest-neighbor motion resampling that preserves clip duration.
 - Added escaped JUnit XML quality reports for CI test-report integration.
 - Added named multi-asset batch gates with aggregate JSON and CSV reports.
+- Extended the CLI with bounds, resampling, batch-gate, and JUnit modes.
 
 ## Repository acceptance hardening - 2026-08-18
 

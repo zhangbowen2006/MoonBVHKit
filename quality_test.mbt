@@ -52,6 +52,7 @@ test "JUnit quality report represents a clean asset" {
   assert_true(xml.find("tests=\"1\"") != None)
   assert_true(xml.find("failures=\"0\"") != None)
   assert_true(xml.find("<testcase name=\"quality\"") != None)
+  assert_true(xml.find("/>,</testsuite>") == None)
 }
 
 ///|

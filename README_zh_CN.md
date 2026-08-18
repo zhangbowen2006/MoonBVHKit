@@ -43,6 +43,10 @@ moon test --deny-warn
 moon run cmd/main
 moon run cmd/main -- --quality --json
 moon run cmd/main -- --profiles --csv
+moon run cmd/main -- --bounds --json
+moon run cmd/main -- --resample 12
+moon run cmd/main -- --batch --profile strict-ci --csv
+moon run cmd/main -- --junit
 moon run examples/basic
 ```
 

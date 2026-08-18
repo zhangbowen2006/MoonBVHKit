@@ -11,6 +11,8 @@ moon test
 moon run cmd/main
 moon run cmd/main -- --quality --json
 moon run cmd/main -- --profiles --csv
+moon run cmd/main -- --bounds --json
+moon run cmd/main -- --batch --profile strict-ci --csv
 moon run examples/basic
 ```
 

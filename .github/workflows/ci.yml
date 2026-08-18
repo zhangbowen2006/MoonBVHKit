@@ -61,5 +61,17 @@ jobs:
       - name: Run CLI Profiles
         run: moon run cmd/main -- --profiles --csv
 
+      - name: Run CLI Bounds
+        run: moon run cmd/main -- --bounds --json
+
+      - name: Run CLI Resampling
+        run: moon run cmd/main -- --resample 12
+
+      - name: Run CLI Batch Gate
+        run: moon run cmd/main -- --batch --profile strict-ci --csv
+
+      - name: Run CLI JUnit
+        run: moon run cmd/main -- --junit
+
       - name: Run Basic Example
         run: moon run examples/basic
