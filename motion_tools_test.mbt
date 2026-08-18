@@ -50,6 +50,40 @@ test "slice motion and document preserve hierarchy" {
 }
 
 ///|
+test "nearest resampling preserves first last and duration" {
+  let source = motion_doc()
+  let sampled = @moonbvhkit.resample_document_nearest(source, 2)
+  assert_eq(sampled.root.name, "Hips")
+  assert_eq(sampled.motion.frame_count, 2)
+  assert_eq(sampled.motion.frames[0][0], 0.0)
+  assert_eq(sampled.motion.frames[1][0], 3.0)
+  assert_eq(sampled.duration_seconds(), source.duration_seconds())
+}
+
+///|
+test "nearest resampling selects deterministic middle frames" {
+  let sampled = @moonbvhkit.resample_document_nearest(motion_doc(), 3)
+  assert_eq(sampled.motion.frames[0][0], 0.0)
+  assert_eq(sampled.motion.frames[1][0], 2.0)
+  assert_eq(sampled.motion.frames[2][0], 3.0)
+}
+
+///|
+test "nearest resampling rejects non-positive target counts" {
+  let sampled = @moonbvhkit.resample_document_nearest(motion_doc(), 0)
+  assert_eq(sampled.motion.frame_count, 0)
+  assert_eq(sampled.motion.frames.length(), 0)
+}
+
+///|
+test "nearest resampling copies frame storage" {
+  let source = motion_doc()
+  let sampled = @moonbvhkit.resample_document_nearest(source, 2)
+  sampled.motion.frames[0][0] = 99.0
+  assert_eq(source.motion.frames[0][0], 0.0)
+}
+
+///|
 test "first last and loop closure use root position" {
   let doc = motion_doc()
   assert_eq(@moonbvhkit.first_frame(doc)[0], 0.0)

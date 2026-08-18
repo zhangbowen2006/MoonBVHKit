@@ -123,6 +123,61 @@ pub fn slice_document(
 }
 
 ///|
+fn resample_source_index(
+  source_count : Int,
+  target_count : Int,
+  target_index : Int,
+) -> Int {
+  if source_count <= 1 || target_count <= 1 {
+    0
+  } else {
+    (target_index.to_double() *
+    (source_count - 1).to_double() /
+    (target_count - 1).to_double())
+    .round()
+    .to_int()
+  }
+}
+
+///|
+pub fn resample_motion_nearest(
+  motion : BvhMotion,
+  target_frame_count : Int,
+) -> BvhMotion {
+  if motion.frames.length() == 0 || target_frame_count <= 0 {
+    return BvhMotion::empty()
+  }
+  let frames : Array[Array[Double]] = []
+  for i in 0..<target_frame_count {
+    let source_index = resample_source_index(
+      motion.frames.length(),
+      target_frame_count,
+      i,
+    )
+    frames.push(motion.frames[source_index].copy())
+  }
+  {
+    frame_count: frames.length(),
+    frame_time: motion.duration_seconds() / target_frame_count.to_double(),
+    channel_count: motion.channel_count,
+    frames,
+  }
+}
+
+///|
+pub fn resample_document_nearest(
+  document : BvhDocument,
+  target_frame_count : Int,
+) -> BvhDocument {
+  {
+    root: document.root,
+    motion: resample_motion_nearest(document.motion, target_frame_count),
+    source_length: document.source_length,
+    token_count: document.token_count,
+  }
+}
+
+///|
 pub fn first_frame(document : BvhDocument) -> Array[Double] {
   frame_at(document, 0)
 }

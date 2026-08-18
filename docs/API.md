@@ -97,6 +97,8 @@ Frame helpers:
 - `frame_window(document, start_frame, end_frame)`
 - `slice_motion(motion, start_frame, end_frame)`
 - `slice_document(document, start_frame, end_frame)`
+- `resample_motion_nearest(motion, target_frame_count)`
+- `resample_document_nearest(document, target_frame_count)`
 - `first_frame(document)`
 - `last_frame(document)`
 

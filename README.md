@@ -107,7 +107,7 @@ Supported profiles are `unity`, `blender`, `strict-ci`, and `preview`.
 | Frames | `frame_values_for_joint`, `frame_values_for_joint_name`, `root_position_at`, `joint_rotation_at` |
 | Analysis | `analyze_bvh`, `channel_ranges`, `widest_channel_range`, `detect_static_channels`, `sample_root_motion` |
 | Skeleton | `skeleton_bones`, `summarize_skeleton`, `compare_skeletons`, `build_name_based_retarget_map` |
-| Motion Tools | `slice_document`, `frame_at_time`, `root_motion_bounds`, `root_speed_samples`, `detect_root_teleports`, `normalize_root_origin` |
+| Motion Tools | `slice_document`, `resample_document_nearest`, `frame_at_time`, `root_motion_bounds`, `root_speed_samples`, `detect_root_teleports`, `normalize_root_origin` |
 | Validation | `validate_bvh`, `validate_document`, `validation_summary` |
 | Quality | `quality_report`, `quality_report_from_bvh`, `quality_report_to_text`, `quality_report_to_json`, `quality_report_to_csv`, `quality_action_for_bvh` |
 | Import Profiles | `unity_import_profile`, `blender_import_profile`, `strict_ci_import_profile`, `evaluate_import_profile`, `import_decision_to_json` |

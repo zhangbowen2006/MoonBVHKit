@@ -170,6 +170,10 @@ pub fn report_to_json(BvhReport) -> String
 
 pub fn report_to_text(BvhReport) -> String
 
+pub fn resample_document_nearest(BvhDocument, Int) -> BvhDocument
+
+pub fn resample_motion_nearest(BvhMotion, Int) -> BvhMotion
+
 pub fn retarget_map_to_csv(Array[BvhRetargetMapEntry]) -> String
 
 pub fn root_motion_bounds(BvhDocument) -> BvhRootMotionBounds
