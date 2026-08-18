@@ -3,14 +3,14 @@
 [简体中文](README_zh_CN.md)
 
 [![CI](https://github.com/zhangbowen2006/MoonBVHKit/actions/workflows/ci.yml/badge.svg)](https://github.com/zhangbowen2006/MoonBVHKit/actions/workflows/ci.yml)
-[![Mooncakes](https://img.shields.io/badge/mooncakes-0.1.0-orange)](https://mooncakes.io/docs/zhangbowen2006/moonbvhkit@0.1.0)
+[![Mooncakes](https://img.shields.io/badge/mooncakes-0.2.0-orange)](https://mooncakes.io/docs/zhangbowen2006/moonbvhkit@0.2.0)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
 MoonBVHKit is a MoonBit-native BVH motion capture parser, validator, analysis helper library, and asset-pipeline reporting toolkit.
 
 ## Status
 
-Version `0.1.0` is published on [Mooncakes](https://mooncakes.io/docs/zhangbowen2006/moonbvhkit@0.1.0). The release contains a reusable library, CLI smoke command, basic example, 72 tests, documentation, strict CI configuration, and Mooncakes metadata for `zhangbowen2006/moonbvhkit`.
+Version `0.2.0` is published on [Mooncakes](https://mooncakes.io/docs/zhangbowen2006/moonbvhkit@0.2.0). The release contains a reusable library, multi-mode CLI, basic example, 90 tests, complete documentation, strict CI, and Mooncakes metadata for `zhangbowen2006/moonbvhkit`.
 
 Repository target: `https://github.com/zhangbowen2006/MoonBVHKit.git`.
 
@@ -25,13 +25,15 @@ Author/submission: 张博文.
 - Query helpers for joint names, paths, channel order, per-joint frame values, root position, and root motion.
 - Skeleton summaries, signatures, compatibility diffs, and name-based retarget maps.
 - Motion slicing, frame lookup by time, root-speed sampling, root teleport detection, and root-origin normalization.
+- Duration-preserving nearest-neighbor resampling and root-motion spatial bounds.
 - Validation for malformed source, channel offsets, unknown channels, frame counts, frame widths, and importer-oriented warnings.
 - Import quality scoring with severity signals and recommended CI actions.
 - Unity, Blender, strict CI, and preview import profiles for reusable asset-gate decisions.
-- Text, JSON, and CSV reporting for automation.
+- Named multi-asset gates with aggregate decisions and per-asset results.
+- Text, JSON, CSV, and JUnit XML reporting for automation.
 - Unity and Blender integration metadata plans, without depending on either application.
 
-## Not Supported in v1
+## Not Supported in 0.2
 
 - Blender Python add-on or Unity Editor plug-in.
 - Binary/private BVH variants.
@@ -42,7 +44,7 @@ Author/submission: 张博文.
 ## Install
 
 ```bash
-moon add zhangbowen2006/moonbvhkit@0.1.0
+moon add zhangbowen2006/moonbvhkit@0.2.0
 ```
 
 For local development, clone the repository and run the commands below from the project root.

@@ -58,7 +58,7 @@ pub fn build_blender_import_plan(
 ) -> BvhBlenderImportPlan {
   let notes : Array[String] = [
     "BVH offsets are preserved in file units", "rotation channel order is kept per joint",
-    "v1 does not bake coordinate-system conversion",
+    "package does not bake coordinate-system conversion",
   ]
   {
     armature_name,

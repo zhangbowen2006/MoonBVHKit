@@ -10,7 +10,9 @@ depend on external files, network access, Unity, or Blender.
 - joint, channel, frame, root-motion, and timing queries
 - validation, statistics, quality scoring, and import gate decisions
 - skeleton comparison, retarget planning, slicing, and normalization
-- text, JSON, CSV, Unity-plan, and Blender-plan output
+- root-motion bounds and duration-preserving nearest-neighbor resampling
+- single-asset and named multi-asset import gates
+- text, JSON, CSV, JUnit XML, Unity-plan, and Blender-plan output
 - valid asset approval and malformed asset rejection across the full pipeline
 
 ## Reproduce Locally
@@ -55,7 +57,7 @@ the CLI output modes, and runs the basic example.
 ## Recorded Result
 
 On 2026-08-18, the local acceptance run used MoonBit compiler 0.10.8 and
-completed with 72 tests passed and 0 failed. Strict checking, build, formatting,
-API snapshot generation, CLI text, JSON and CSV output, and the basic example
+completed with 90 tests passed and 0 failed. Strict checking, build, formatting,
+API snapshot generation, every documented CLI output mode, and the basic example
 all completed successfully. GitHub Actions provides the independently
 reproducible remote result for each pushed commit on the default branch.

@@ -1,6 +1,6 @@
 # Contributing
 
-MoonBVHKit keeps v1 intentionally small and portable.
+MoonBVHKit keeps its ASCII BVH scope intentionally focused and portable.
 
 ## Development
 

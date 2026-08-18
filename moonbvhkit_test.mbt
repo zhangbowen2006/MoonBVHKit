@@ -274,6 +274,7 @@ test "validation summary distinguishes ok and failed reports" {
 ///|
 test "manifest JSON and text include package metadata" {
   let manifest = @moonbvhkit.bvh_runtime_manifest()
+  assert_eq(manifest.version, "0.2.0")
   assert_true(@moonbvhkit.manifest_to_text(manifest).find("ASCII BVH") != None)
   assert_true(
     @moonbvhkit.manifest_to_json(manifest).find("\"packageName\"") != None,

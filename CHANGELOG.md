@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.2.0
+## 0.2.0 - 2026-08-18
 
 - Added root-motion bounds with min/max/size metrics and JSON/CSV exporters.
 - Added deterministic nearest-neighbor motion resampling that preserves clip duration.

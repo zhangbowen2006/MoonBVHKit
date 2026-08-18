@@ -26,7 +26,7 @@ pub(all) struct BvhRuntimeManifest {
 pub fn bvh_runtime_manifest() -> BvhRuntimeManifest {
   {
     package_name: "zhangbowen2006/moonbvhkit",
-    version: "0.1.0",
+    version: "0.2.0",
     supported_format: "ASCII BVH hierarchy and motion data",
     entries: [
       BvhSupportEntry::new(
@@ -48,7 +48,7 @@ pub fn bvh_runtime_manifest() -> BvhRuntimeManifest {
         "Blender plan", "supported", "import guidance manifest, not a Python addon",
       ),
       BvhSupportEntry::new(
-        "Binary BVH variants", "not-supported", "v1 stays focused on portable ASCII BVH",
+        "Binary BVH variants", "not-supported", "package scope stays focused on portable ASCII BVH",
       ),
     ],
   }

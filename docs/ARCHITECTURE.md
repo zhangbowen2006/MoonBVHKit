@@ -13,7 +13,8 @@ BVH text
   -> BvhDocument
   -> validation and analysis
   -> quality score and import profiles
-  -> Text / JSON / CSV / Unity plan / Blender plan
+  -> single or batch asset decisions
+  -> Text / JSON / CSV / JUnit XML / Unity plan / Blender plan
 ```
 
 ## Layers
@@ -35,15 +36,16 @@ frame counts, frame widths, and frame timing.
 
 `analysis.mbt` computes clip statistics and channel ranges. `skeleton.mbt`
 provides stable skeleton summaries, compatibility comparison, and conservative
-retarget planning. `motion_tools.mbt` provides frame slicing, time lookup,
-speed sampling, teleport detection, and root-origin normalization.
+retarget planning. `motion_tools.mbt` provides frame slicing, duration-preserving
+resampling, time lookup, root-motion bounds, speed sampling, teleport detection,
+and root-origin normalization.
 
 ### Asset Policy Layer
 
 `quality.mbt` converts validation and motion signals into a deterministic score,
 grade, and action. `profiles.mbt` applies named Unity, Blender, strict CI, and
-preview policies without importing an editor SDK. This keeps policy decisions
-testable on every MoonBit target.
+preview policies to individual assets or named batches without importing an
+editor SDK. This keeps policy decisions testable on every MoonBit target.
 
 ### Integration and Output Layer
 
@@ -64,7 +66,7 @@ in `cmd/main` demonstrates these outputs with a synthetic fixture.
 
 ## Functional Boundary
 
-Version 0.1.0 accepts ASCII BVH text and returns structured data, diagnostics,
+Version 0.2.0 accepts ASCII BVH text and returns structured data, diagnostics,
 statistics, policy decisions, and reports. It does not read files on behalf of
 the host, bind to Unity or Blender, solve skeletons, bake rotations, retarget
 animation, convert coordinate systems, or process FBX, glTF, and USD. Keeping

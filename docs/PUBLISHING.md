@@ -5,7 +5,7 @@ This package is configured for:
 - Mooncakes package: `zhangbowen2006/moonbvhkit`
 - GitHub repository: `https://github.com/zhangbowen2006/MoonBVHKit.git`
 
-Release `0.1.0` has been published successfully. The commands below document
+Release `0.2.0` has been published successfully. The commands below document
 the repeatable process for maintenance releases.
 
 ## Before Publishing
@@ -40,6 +40,10 @@ moon run cmd/main -- --json
 moon run cmd/main -- --csv
 moon run cmd/main -- --quality --json
 moon run cmd/main -- --profiles --csv
+moon run cmd/main -- --bounds --json
+moon run cmd/main -- --resample 12
+moon run cmd/main -- --batch --profile strict-ci --csv
+moon run cmd/main -- --junit
 moon run examples/basic
 ```
 

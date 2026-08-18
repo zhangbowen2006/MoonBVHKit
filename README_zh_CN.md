@@ -7,10 +7,10 @@ MoonBVHKit 是一个 MoonBit 原生的 ASCII BVH 动作捕捉解析、校验、�
 ## 发布状态
 
 - GitHub：<https://github.com/zhangbowen2006/MoonBVHKit>
-- Mooncakes：[`zhangbowen2006/moonbvhkit@0.1.0`](https://mooncakes.io/docs/zhangbowen2006/moonbvhkit@0.1.0)
+- Mooncakes：[`zhangbowen2006/moonbvhkit@0.2.0`](https://mooncakes.io/docs/zhangbowen2006/moonbvhkit@0.2.0)
 - 许可证：MIT
 - 维护者：张博文（GitHub：`zhangbowen2006`）
-- 验证结果：72 个测试全部通过，严格检查、构建、格式检查、API 快照、CLI 和示例均通过
+- 验证结果：90 个测试全部通过，严格检查、构建、格式检查、API 快照、CLI 和示例均通过
 
 ## 已实现能力
 
@@ -24,12 +24,12 @@ MoonBVHKit 是一个 MoonBit 原生的 ASCII BVH 动作捕捉解析、校验、�
 - 提供 Unity、Blender、Strict CI、Preview 四类资产门禁策略；
 - 提供多资产批量门禁、接受/阻塞汇总和逐资产 JSON/CSV 决策；
 - 输出 Text、JSON、CSV、JUnit XML、Unity clip plan 和 Blender import plan；
-- 提供可运行 CLI、basic example、72 个测试和 GitHub Actions CI。
+- 提供可运行 CLI、basic example、90 个测试和 GitHub Actions CI。
 
 ## 安装
 
 ```bash
-moon add zhangbowen2006/moonbvhkit@0.1.0
+moon add zhangbowen2006/moonbvhkit@0.2.0
 ```
 
 ## 本地运行

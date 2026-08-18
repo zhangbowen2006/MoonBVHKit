@@ -4,17 +4,17 @@
 
 - 参赛者：张博文；GitHub：`zhangbowen2006`。
 - 公开仓库：<https://github.com/zhangbowen2006/MoonBVHKit>，默认分支 `main`。
-- Mooncakes：`zhangbowen2006/moonbvhkit@0.1.0`，已正式发布。
+- Mooncakes：`zhangbowen2006/moonbvhkit@0.2.0`，已正式发布。
 - 开源许可证：MIT，位于仓库根目录。
 
 ## 已完成材料
 
 - 中英文 README、API 文档、架构说明、集成指南、测试记录、来源说明、发布指南和安全策略。
-- CLI、basic example、Text/JSON/CSV 输出和 Unity/Blender 元数据计划。
-- 72 个自动化测试和跨模块验收测试。
+- CLI、basic example、Text/JSON/CSV/JUnit 输出和 Unity/Blender 元数据计划。
+- 90 个自动化测试和跨模块验收测试。
 - GitHub Actions 严格 CI、Windows 一键验收脚本和 API 快照检查。
 - 一页左右的最终 Markdown 申报书与逐条验收报告。
-- CHANGELOG、CONTRIBUTING、AUTHORS 和 6 个真实开发提交。
+- CHANGELOG、CONTRIBUTING、AUTHORS 和 7 个真实有效提交。
 
 ## 最终实测
 
@@ -27,10 +27,14 @@ moon info
 moon run cmd/main
 moon run cmd/main -- --quality --json
 moon run cmd/main -- --profiles --csv
+moon run cmd/main -- --bounds --json
+moon run cmd/main -- --resample 12
+moon run cmd/main -- --batch --profile strict-ci --csv
+moon run cmd/main -- --junit
 moon run examples/basic
 ```
 
-结果：72 个测试全部通过，0 个失败；全部构建、CLI 和示例命令通过。
+结果：90 个测试全部通过，0 个失败；全部构建、CLI 和示例命令通过。
 
 ## 提交身份
 
