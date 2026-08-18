@@ -177,6 +177,7 @@ Evaluation:
 - `evaluate_import_profile(document, profile)`
 - `evaluate_bvh_import_profile(input, profile)`
 - `evaluate_default_import_profiles(document)`
+- `evaluate_bvh_batch(assets, profile)`
 
 Export helpers:
 
@@ -185,6 +186,8 @@ Export helpers:
 - `import_decision_to_text(decision)`
 - `import_decisions_to_csv(decisions)`
 - `import_profiles_to_csv(profiles)`
+- `batch_import_report_to_json(report)`
+- `batch_import_report_to_csv(report)`
 
 ## Export and Reports
 

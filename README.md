@@ -110,7 +110,7 @@ Supported profiles are `unity`, `blender`, `strict-ci`, and `preview`.
 | Motion Tools | `slice_document`, `resample_document_nearest`, `frame_at_time`, `root_motion_bounds`, `root_speed_samples`, `detect_root_teleports`, `normalize_root_origin` |
 | Validation | `validate_bvh`, `validate_document`, `validation_summary` |
 | Quality | `quality_report`, `quality_report_from_bvh`, `quality_report_to_text`, `quality_report_to_json`, `quality_report_to_csv`, `quality_report_to_junit_xml`, `quality_action_for_bvh` |
-| Import Profiles | `unity_import_profile`, `blender_import_profile`, `strict_ci_import_profile`, `evaluate_import_profile`, `import_decision_to_json` |
+| Import Profiles | `unity_import_profile`, `blender_import_profile`, `strict_ci_import_profile`, `evaluate_import_profile`, `evaluate_bvh_batch`, `import_decision_to_json` |
 | Export | `document_to_json`, `joint_table_csv`, `channel_range_csv`, `root_motion_csv` |
 | Integration | `build_unity_clip_plan`, `build_blender_import_plan`, `bvh_runtime_manifest` |
 | Report | `build_report`, `format_report`, `bvh_fixture_report` |

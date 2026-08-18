@@ -543,6 +543,93 @@ pub fn evaluate_default_import_profiles(
 }
 
 ///|
+pub(all) struct BvhNamedAsset {
+  name : String
+  source : String
+} derive(Eq, @debug.Debug)
+
+///|
+pub fn BvhNamedAsset::new(name : String, source : String) -> BvhNamedAsset {
+  { name, source }
+}
+
+///|
+pub(all) struct BvhBatchAssetDecision {
+  asset_name : String
+  decision : BvhImportDecision
+} derive(Eq, @debug.Debug)
+
+///|
+pub(all) struct BvhBatchImportReport {
+  profile_name : String
+  asset_count : Int
+  accepted_count : Int
+  blocked_count : Int
+  assets : Array[BvhBatchAssetDecision]
+} derive(Eq, @debug.Debug)
+
+///|
+pub fn BvhBatchImportReport::all_accepted(self : BvhBatchImportReport) -> Bool {
+  self.blocked_count == 0
+}
+
+///|
+pub fn evaluate_bvh_batch(
+  assets : Array[BvhNamedAsset],
+  profile : BvhImportProfile,
+) -> BvhBatchImportReport {
+  let decisions : Array[BvhBatchAssetDecision] = []
+  let mut accepted_count = 0
+  let mut blocked_count = 0
+  for asset in assets {
+    let decision = evaluate_bvh_import_profile(asset.source, profile)
+    if decision.accepted {
+      accepted_count += 1
+    } else {
+      blocked_count += 1
+    }
+    decisions.push({ asset_name: asset.name, decision })
+  }
+  {
+    profile_name: profile.name,
+    asset_count: decisions.length(),
+    accepted_count,
+    blocked_count,
+    assets: decisions,
+  }
+}
+
+///|
+pub fn batch_import_report_to_json(report : BvhBatchImportReport) -> String {
+  let assets : Array[String] = []
+  for asset in report.assets {
+    assets.push(
+      (
+        $|{"asset":\{json_string(asset.asset_name)},"decision":\{import_decision_to_json(asset.decision)}},
+      ),
+    )
+  }
+  (
+    $|{"profile":\{json_string(report.profile_name)},"assetCount":\{report.asset_count},"acceptedCount":\{report.accepted_count},"blockedCount":\{report.blocked_count},"allAccepted":\{report.all_accepted()},"assets":[\{assets.join(",")}]}
+  )
+}
+
+///|
+pub fn batch_import_report_to_csv(report : BvhBatchImportReport) -> String {
+  let rows : Array[String] = [
+    "asset,profile,accepted,action,quality,score,errors,warnings,issues",
+  ]
+  for asset in report.assets {
+    let decision = asset.decision
+    let safe_name = asset.asset_name.replace_all(old=",", new=" ")
+    rows.push(
+      "\{safe_name},\{decision.profile_name},\{decision.accepted},\{decision.action},\{decision.quality.grade.to_string()},\{decision.quality.score},\{decision.error_count()},\{decision.warning_count()},\{decision.issue_count()}",
+    )
+  }
+  rows.join("\n")
+}
+
+///|
 pub fn import_profile_to_json(profile : BvhImportProfile) -> String {
   let result =
     $|{"kind":\{json_string(profile.kind.to_string())},"name":\{json_string(profile.name)},"maxJointCount":\{profile.max_joint_count},"maxDepth":\{profile.max_depth},"maxDurationSeconds":\{profile.max_duration_seconds},"minFrameRate":\{profile.min_frame_rate},"maxFrameRate":\{profile.max_frame_rate},"maxRootSpeed":\{profile.max_root_speed},"maxRootTeleport":\{profile.max_root_teleport},"minQualityScore":\{profile.min_quality_score},"requireRootPosition":\{profile.require_root_position},"allowUnknownChannels":\{profile.allow_unknown_channels},"allowChildPositionChannels":\{profile.allow_child_position_channels},"requireLoopClosure":\{profile.require_loop_closure}}

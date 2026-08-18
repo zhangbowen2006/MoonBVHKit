@@ -79,6 +79,62 @@ test "default profile matrix evaluates every profile" {
 }
 
 ///|
+test "batch gate summarizes accepted and blocked assets" {
+  let report = @moonbvhkit.evaluate_bvh_batch(
+    [
+      @moonbvhkit.BvhNamedAsset::new("walk", @moonbvhkit.fixture_walk_bvh()),
+      @moonbvhkit.BvhNamedAsset::new(
+        "broken",
+        @moonbvhkit.fixture_invalid_frame_width(),
+      ),
+    ],
+    @moonbvhkit.strict_ci_import_profile(),
+  )
+  assert_eq(report.asset_count, 2)
+  assert_eq(report.accepted_count, 1)
+  assert_eq(report.blocked_count, 1)
+  assert_true(!report.all_accepted())
+}
+
+///|
+test "batch gate accepts an empty batch" {
+  let report = @moonbvhkit.evaluate_bvh_batch(
+    [],
+    @moonbvhkit.strict_ci_import_profile(),
+  )
+  assert_eq(report.asset_count, 0)
+  assert_true(report.all_accepted())
+}
+
+///|
+test "batch gate JSON preserves asset names and counts" {
+  let report = @moonbvhkit.evaluate_bvh_batch(
+    [@moonbvhkit.BvhNamedAsset::new("walk", @moonbvhkit.fixture_walk_bvh())],
+    @moonbvhkit.unity_import_profile(),
+  )
+  let json = @moonbvhkit.batch_import_report_to_json(report)
+  assert_true(json.find("\"assetCount\":1") != None)
+  assert_true(json.find("\"asset\":\"walk\"") != None)
+  assert_true(json.find("\"allAccepted\":true") != None)
+}
+
+///|
+test "batch gate CSV exposes one decision per asset" {
+  let report = @moonbvhkit.evaluate_bvh_batch(
+    [
+      @moonbvhkit.BvhNamedAsset::new(
+        "walk,preview",
+        @moonbvhkit.fixture_walk_bvh(),
+      ),
+    ],
+    @moonbvhkit.preview_import_profile(),
+  )
+  let csv = @moonbvhkit.batch_import_report_to_csv(report)
+  assert_true(csv.find("asset,profile,accepted,action") != None)
+  assert_true(csv.find("walk preview") != None)
+}
+
+///|
 test "profile and decision exporters are stable" {
   let profile = @moonbvhkit.unity_import_profile()
   let profile_json = @moonbvhkit.import_profile_to_json(profile)

@@ -10,6 +10,10 @@ pub fn analyze_bvh(BvhDocument) -> BvhStats
 
 pub fn average_root_speed(BvhDocument) -> Double
 
+pub fn batch_import_report_to_csv(BvhBatchImportReport) -> String
+
+pub fn batch_import_report_to_json(BvhBatchImportReport) -> String
+
 pub fn blender_import_plan_to_json(BvhBlenderImportPlan) -> String
 
 pub fn blender_import_profile() -> BvhImportProfile
@@ -59,6 +63,8 @@ pub fn document_frame_rate(BvhDocument) -> Double
 pub fn document_to_json(BvhDocument) -> String
 
 pub fn end_site_paths(BvhDocument) -> Array[String]
+
+pub fn evaluate_bvh_batch(Array[BvhNamedAsset], BvhImportProfile) -> BvhBatchImportReport
 
 pub fn evaluate_bvh_import_profile(String, BvhImportProfile) -> BvhImportDecision
 
@@ -239,6 +245,20 @@ pub fn widest_channel_range(BvhDocument) -> BvhChannelRange?
 // Errors
 
 // Types and methods
+pub(all) struct BvhBatchAssetDecision {
+  asset_name : String
+  decision : BvhImportDecision
+} derive(Eq, @debug.Debug)
+
+pub(all) struct BvhBatchImportReport {
+  profile_name : String
+  asset_count : Int
+  accepted_count : Int
+  blocked_count : Int
+  assets : Array[BvhBatchAssetDecision]
+} derive(Eq, @debug.Debug)
+pub fn BvhBatchImportReport::all_accepted(Self) -> Bool
+
 pub(all) struct BvhBlenderImportPlan {
   armature_name : String
   bone_count : Int
@@ -416,6 +436,12 @@ pub(all) struct BvhMotion {
 pub fn BvhMotion::duration_seconds(Self) -> Double
 pub fn BvhMotion::empty() -> Self
 pub fn BvhMotion::is_empty(Self) -> Bool
+
+pub(all) struct BvhNamedAsset {
+  name : String
+  source : String
+} derive(Eq, @debug.Debug)
+pub fn BvhNamedAsset::new(String, String) -> Self
 
 pub(all) struct BvhParseResult {
   ok : Bool

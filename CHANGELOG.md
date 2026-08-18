@@ -5,6 +5,7 @@
 - Added root-motion bounds with min/max/size metrics and JSON/CSV exporters.
 - Added deterministic nearest-neighbor motion resampling that preserves clip duration.
 - Added escaped JUnit XML quality reports for CI test-report integration.
+- Added named multi-asset batch gates with aggregate JSON and CSV reports.
 
 ## Repository acceptance hardening - 2026-08-18
 
