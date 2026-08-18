@@ -17,7 +17,7 @@ MoonBVHKit 是一个 MoonBit 原生的 ASCII BVH 动作捕捉解析、校验、�
 - 解析 `ROOT`、嵌套 `JOINT`、`End Site`、`OFFSET`、`CHANNELS` 和 `MOTION`；
 - 查询关节名称、路径、通道顺序、单关节帧值、root position 和 root motion；
 - 校验未知通道、通道偏移、帧数、帧宽、帧时间和非 root 位移通道；
-- 统计动作时长、通道范围、静态通道、root speed 和 root teleport；
+- 统计动作时长、通道范围、静态通道、root motion 空间边界、root speed 和 root teleport；
 - 生成骨架摘要、稳定签名、骨架差异和同名骨骼 retarget map；
 - 对动作进行切片、按时间取帧和 root 原点归一化；
 - 生成 0 到 100 的导入质量评分和自动化处理建议；

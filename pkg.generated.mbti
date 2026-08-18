@@ -172,6 +172,12 @@ pub fn report_to_text(BvhReport) -> String
 
 pub fn retarget_map_to_csv(Array[BvhRetargetMapEntry]) -> String
 
+pub fn root_motion_bounds(BvhDocument) -> BvhRootMotionBounds
+
+pub fn root_motion_bounds_to_csv(BvhRootMotionBounds) -> String
+
+pub fn root_motion_bounds_to_json(BvhRootMotionBounds) -> String
+
 pub fn root_motion_csv(BvhDocument) -> String
 
 pub fn root_motion_delta(BvhDocument) -> BvhVec3
@@ -472,6 +478,14 @@ pub(all) struct BvhRetargetMapEntry {
   notes : String
 } derive(Eq, @debug.Debug)
 pub fn BvhRetargetMapEntry::new(String, String, Int, Int) -> Self
+
+pub(all) struct BvhRootMotionBounds {
+  min_position : BvhVec3
+  max_position : BvhVec3
+  size : BvhVec3
+  sample_count : Int
+} derive(Eq, @debug.Debug)
+pub fn BvhRootMotionBounds::empty() -> Self
 
 pub(all) struct BvhRootTeleport {
   frame_index : Int

@@ -58,6 +58,37 @@ test "first last and loop closure use root position" {
 }
 
 ///|
+test "root motion bounds capture the full translation range" {
+  let bounds = @moonbvhkit.root_motion_bounds(motion_doc())
+  assert_eq(bounds.sample_count, 4)
+  assert_eq(bounds.min_position.x, 0.0)
+  assert_eq(bounds.max_position.x, 3.0)
+  assert_eq(bounds.max_position.z, 0.6)
+  assert_eq(bounds.size.x, 3.0)
+  assert_eq(bounds.size.z, 0.6)
+}
+
+///|
+test "root motion bounds handle empty documents" {
+  let bounds = @moonbvhkit.root_motion_bounds(@moonbvhkit.BvhDocument::empty())
+  assert_eq(bounds.sample_count, 0)
+  assert_eq(bounds.size.x, 0.0)
+  assert_eq(bounds.size.y, 0.0)
+  assert_eq(bounds.size.z, 0.0)
+}
+
+///|
+test "root motion bounds export JSON and CSV" {
+  let bounds = @moonbvhkit.root_motion_bounds(motion_doc())
+  let json = @moonbvhkit.root_motion_bounds_to_json(bounds)
+  let csv = @moonbvhkit.root_motion_bounds_to_csv(bounds)
+  assert_true(json.find("\"sampleCount\":4") != None)
+  assert_true(json.find("\"size\":") != None)
+  assert_true(csv.find("metric,x,y,z") != None)
+  assert_true(csv.find("size,3") != None)
+}
+
+///|
 test "root speed samples compute per-frame movement" {
   let doc = motion_doc()
   let samples = @moonbvhkit.root_speed_samples(doc)

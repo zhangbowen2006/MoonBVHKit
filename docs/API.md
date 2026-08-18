@@ -102,6 +102,9 @@ Frame helpers:
 
 Root-motion helpers:
 
+- `root_motion_bounds(document)`
+- `root_motion_bounds_to_json(bounds)`
+- `root_motion_bounds_to_csv(bounds)`
 - `loop_closure_error(document)`
 - `root_speed_samples(document)`
 - `average_root_speed(document)`

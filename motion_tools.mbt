@@ -144,6 +144,72 @@ pub fn loop_closure_error(document : BvhDocument) -> Double {
 }
 
 ///|
+pub(all) struct BvhRootMotionBounds {
+  min_position : BvhVec3
+  max_position : BvhVec3
+  size : BvhVec3
+  sample_count : Int
+} derive(Eq, @debug.Debug)
+
+///|
+pub fn BvhRootMotionBounds::empty() -> BvhRootMotionBounds {
+  {
+    min_position: BvhVec3::zero(),
+    max_position: BvhVec3::zero(),
+    size: BvhVec3::zero(),
+    sample_count: 0,
+  }
+}
+
+///|
+pub fn root_motion_bounds(document : BvhDocument) -> BvhRootMotionBounds {
+  if document.motion.frames.length() == 0 {
+    return BvhRootMotionBounds::empty()
+  }
+  let first = root_position_at(document, 0)
+  let mut min_x = first.x
+  let mut min_y = first.y
+  let mut min_z = first.z
+  let mut max_x = first.x
+  let mut max_y = first.y
+  let mut max_z = first.z
+  for i in 1..<document.motion.frames.length() {
+    let position = root_position_at(document, i)
+    min_x = min_double(min_x, position.x)
+    min_y = min_double(min_y, position.y)
+    min_z = min_double(min_z, position.z)
+    max_x = max_double(max_x, position.x)
+    max_y = max_double(max_y, position.y)
+    max_z = max_double(max_z, position.z)
+  }
+  let min_position = BvhVec3::new(min_x, min_y, min_z)
+  let max_position = BvhVec3::new(max_x, max_y, max_z)
+  {
+    min_position,
+    max_position,
+    size: max_position.sub(min_position),
+    sample_count: document.motion.frames.length(),
+  }
+}
+
+///|
+pub fn root_motion_bounds_to_json(bounds : BvhRootMotionBounds) -> String {
+  let result =
+    $|{"min":\{vec3_to_json(bounds.min_position)},"max":\{vec3_to_json(bounds.max_position)},"size":\{vec3_to_json(bounds.size)},"sampleCount":\{bounds.sample_count}}
+  result
+}
+
+///|
+pub fn root_motion_bounds_to_csv(bounds : BvhRootMotionBounds) -> String {
+  [
+    "metric,x,y,z",
+    "min,\{bounds.min_position.to_csv()}",
+    "max,\{bounds.max_position.to_csv()}",
+    "size,\{bounds.size.to_csv()}",
+  ].join("\n")
+}
+
+///|
 pub(all) struct BvhSpeedSample {
   frame_index : Int
   seconds : Double

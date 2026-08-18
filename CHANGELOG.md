@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.2.0
+
+- Added root-motion bounds with min/max/size metrics and JSON/CSV exporters.
+
 ## Repository acceptance hardening - 2026-08-18
 
 - Added authorship mapping and source, dependency, fixture, and AI-assistance provenance.
