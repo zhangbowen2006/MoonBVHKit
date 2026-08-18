@@ -1,0 +1,6 @@
+import {
+  "zhangbowen2006/moonbvhkit",
+  "moonbitlang/core/env",
+}
+
+pkgtype(kind: "executable")

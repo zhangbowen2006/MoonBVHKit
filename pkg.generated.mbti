@@ -1,0 +1,619 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "zhangbowen2006/moonbvhkit"
+
+import {
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn analyze_bvh(BvhDocument) -> BvhStats
+
+pub fn average_root_speed(BvhDocument) -> Double
+
+pub fn blender_import_plan_to_json(BvhBlenderImportPlan) -> String
+
+pub fn blender_import_profile() -> BvhImportProfile
+
+pub fn build_blender_import_plan(BvhDocument, armature_name? : String) -> BvhBlenderImportPlan
+
+pub fn build_name_based_retarget_map(BvhDocument, BvhDocument) -> Array[BvhRetargetMapEntry]
+
+pub fn build_report(String) -> BvhReport
+
+pub fn build_unity_clip_plan(BvhDocument, clip_name? : String) -> BvhUnityClipPlan
+
+pub fn bvh_fixture_report(format? : BvhReportFormat) -> String
+
+pub fn bvh_runtime_manifest() -> BvhRuntimeManifest
+
+pub fn bvh_summary_line(BvhDocument) -> String
+
+pub fn bvh_tokens_to_text(Array[BvhToken]) -> String
+
+pub fn channel_index_for_path(BvhDocument, String, BvhChannel) -> Int
+
+pub fn channel_names(Array[BvhChannel]) -> Array[String]
+
+pub fn channel_range_csv(BvhDocument) -> String
+
+pub fn channel_ranges(BvhDocument) -> Array[BvhChannelRange]
+
+pub fn channels_in_motion_order(BvhDocument) -> Array[String]
+
+pub fn channels_to_json(Array[BvhChannel]) -> String
+
+pub fn clamp_frame_index(BvhDocument, Int) -> Int
+
+pub fn compare_skeletons(BvhDocument, BvhDocument, offset_epsilon? : Double) -> BvhSkeletonDiff
+
+pub fn contains_unknown_channels(BvhJoint) -> Bool
+
+pub fn default_import_profiles() -> Array[BvhImportProfile]
+
+pub fn detect_root_teleports(BvhDocument, Double) -> Array[BvhRootTeleport]
+
+pub fn detect_static_channels(BvhDocument, epsilon? : Double) -> Array[BvhChannelRange]
+
+pub fn document_frame_rate(BvhDocument) -> Double
+
+pub fn document_to_json(BvhDocument) -> String
+
+pub fn end_site_paths(BvhDocument) -> Array[String]
+
+pub fn evaluate_bvh_import_profile(String, BvhImportProfile) -> BvhImportDecision
+
+pub fn evaluate_default_import_profiles(BvhDocument) -> Array[BvhImportDecision]
+
+pub fn evaluate_import_profile(BvhDocument, BvhImportProfile) -> BvhImportDecision
+
+pub fn find_joint(BvhDocument, String) -> BvhJoint?
+
+pub fn find_joint_by_path(BvhDocument, String) -> BvhJoint?
+
+pub fn first_frame(BvhDocument) -> Array[Double]
+
+pub fn fixture_empty_bvh() -> String
+
+pub fn fixture_invalid_frame_width() -> String
+
+pub fn fixture_invalid_missing_motion() -> String
+
+pub fn fixture_static_pose_bvh() -> String
+
+pub fn fixture_unknown_channel() -> String
+
+pub fn fixture_walk_bvh() -> String
+
+pub fn format_report(BvhReport, format? : BvhReportFormat) -> String
+
+pub fn frame_at(BvhDocument, Int) -> Array[Double]
+
+pub fn frame_at_time(BvhDocument, Double) -> Array[Double]
+
+pub fn frame_values_for_joint(BvhDocument, BvhJoint, Int) -> Array[Double]
+
+pub fn frame_values_for_joint_name(BvhDocument, String, Int) -> Array[Double]
+
+pub fn frame_window(BvhDocument, Int, Int) -> BvhFrameWindow
+
+pub fn has_joint(BvhDocument, String) -> Bool
+
+pub fn import_decision_to_json(BvhImportDecision) -> String
+
+pub fn import_decision_to_text(BvhImportDecision) -> String
+
+pub fn import_decisions_to_csv(Array[BvhImportDecision]) -> String
+
+pub fn import_profile_by_name(String) -> BvhImportProfile
+
+pub fn import_profile_issues(BvhDocument, BvhImportProfile) -> Array[BvhValidationIssue]
+
+pub fn import_profile_to_json(BvhImportProfile) -> String
+
+pub fn import_profiles_to_csv(Array[BvhImportProfile]) -> String
+
+pub fn joint_channel_names(BvhJoint) -> Array[String]
+
+pub fn joint_names(BvhDocument) -> Array[String]
+
+pub fn joint_paths(BvhDocument) -> Array[String]
+
+pub fn joint_rotation_at(BvhDocument, BvhJoint, Int) -> BvhVec3
+
+pub fn joint_table_csv(BvhDocument) -> String
+
+pub fn joint_to_json(BvhJoint) -> String
+
+pub fn last_frame(BvhDocument) -> Array[Double]
+
+pub fn leaf_joint_paths(BvhDocument) -> Array[String]
+
+pub fn loop_closure_error(BvhDocument) -> Double
+
+pub fn manifest_to_json(BvhRuntimeManifest) -> String
+
+pub fn manifest_to_text(BvhRuntimeManifest) -> String
+
+pub fn max_joint_depth(BvhJoint) -> Int
+
+pub fn max_root_speed(BvhDocument) -> Double
+
+pub fn motion_channel_means(BvhDocument) -> Array[BvhChannelMean]
+
+pub fn nearest_frame_index_at_time(BvhDocument, Double) -> Int
+
+pub fn normalize_root_origin(BvhDocument) -> BvhDocument
+
+pub fn parse_bvh(String) -> BvhParseResult
+
+pub fn parse_bvh_or_empty(String) -> BvhDocument
+
+pub fn preview_import_profile() -> BvhImportProfile
+
+pub fn quality_action_for_bvh(String) -> String
+
+pub fn quality_report(BvhDocument) -> BvhQualityReport
+
+pub fn quality_report_from_bvh(String) -> BvhQualityReport
+
+pub fn quality_report_to_csv(BvhQualityReport) -> String
+
+pub fn quality_report_to_json(BvhQualityReport) -> String
+
+pub fn quality_report_to_text(BvhQualityReport) -> String
+
+pub fn quality_signal_to_json(BvhQualitySignal) -> String
+
+pub fn report_to_csv(BvhReport) -> String
+
+pub fn report_to_json(BvhReport) -> String
+
+pub fn report_to_text(BvhReport) -> String
+
+pub fn retarget_map_to_csv(Array[BvhRetargetMapEntry]) -> String
+
+pub fn root_motion_csv(BvhDocument) -> String
+
+pub fn root_motion_delta(BvhDocument) -> BvhVec3
+
+pub fn root_motion_distance(BvhDocument) -> Double
+
+pub fn root_position_at(BvhDocument, Int) -> BvhVec3
+
+pub fn root_speed_samples(BvhDocument) -> Array[BvhSpeedSample]
+
+pub fn sample_root_motion(BvhDocument, max_samples? : Int) -> Array[BvhPoseSample]
+
+pub fn skeleton_bones(BvhDocument) -> Array[BvhSkeletonBone]
+
+pub fn skeleton_bones_csv(BvhDocument) -> String
+
+pub fn skeleton_diff_to_json(BvhSkeletonDiff) -> String
+
+pub fn skeleton_signature(BvhDocument) -> String
+
+pub fn skeleton_summary_to_json(BvhSkeletonSummary) -> String
+
+pub fn slice_document(BvhDocument, Int, Int) -> BvhDocument
+
+pub fn slice_motion(BvhMotion, Int, Int) -> BvhMotion
+
+pub fn speed_samples_to_csv(Array[BvhSpeedSample]) -> String
+
+pub fn stats_to_json(BvhStats) -> String
+
+pub fn strict_ci_import_profile() -> BvhImportProfile
+
+pub fn summarize_skeleton(BvhDocument) -> BvhSkeletonSummary
+
+pub fn tokenize_bvh(String) -> BvhTokenizeResult
+
+pub fn unity_clip_plan_to_json(BvhUnityClipPlan) -> String
+
+pub fn unity_import_profile() -> BvhImportProfile
+
+pub fn validate_bvh(String) -> BvhValidationReport
+
+pub fn validate_document(BvhDocument) -> BvhValidationReport
+
+pub fn validation_summary(BvhValidationReport) -> String
+
+pub fn validation_to_json(BvhValidationReport) -> String
+
+pub fn vec3_to_json(BvhVec3) -> String
+
+pub fn widest_channel_range(BvhDocument) -> BvhChannelRange?
+
+// Errors
+
+// Types and methods
+pub(all) struct BvhBlenderImportPlan {
+  armature_name : String
+  bone_count : Int
+  leaf_count : Int
+  frame_start : Int
+  frame_end : Int
+  fps : Double
+  preserve_root_motion : Bool
+  axis_notes : Array[String]
+} derive(Eq, @debug.Debug)
+
+pub(all) enum BvhChannel {
+  ChannelXPosition
+  ChannelYPosition
+  ChannelZPosition
+  ChannelXRotation
+  ChannelYRotation
+  ChannelZRotation
+  ChannelUnknown(String)
+} derive(Eq, @debug.Debug)
+pub fn BvhChannel::axis(Self) -> String
+pub fn BvhChannel::from_string(String) -> Self
+pub fn BvhChannel::is_known(Self) -> Bool
+pub fn BvhChannel::is_position(Self) -> Bool
+pub fn BvhChannel::is_rotation(Self) -> Bool
+pub fn BvhChannel::to_string(Self) -> String
+
+pub(all) struct BvhChannelMean {
+  index : Int
+  name : String
+  mean : Double
+  sample_count : Int
+} derive(Eq, @debug.Debug)
+pub fn BvhChannelMean::new(Int, String, Double, Int) -> Self
+
+pub(all) struct BvhChannelRange {
+  path : String
+  channel : String
+  index : Int
+  min : Double
+  max : Double
+  span : Double
+} derive(Eq, @debug.Debug)
+pub fn BvhChannelRange::new(String, String, Int, Double, Double) -> Self
+
+pub(all) struct BvhDocument {
+  root : BvhJoint
+  motion : BvhMotion
+  source_length : Int
+  token_count : Int
+} derive(Eq, @debug.Debug)
+pub fn BvhDocument::channel_count(Self) -> Int
+pub fn BvhDocument::duration_seconds(Self) -> Double
+pub fn BvhDocument::empty() -> Self
+pub fn BvhDocument::end_site_count(Self) -> Int
+pub fn BvhDocument::is_complete(Self) -> Bool
+pub fn BvhDocument::joint_count(Self) -> Int
+
+pub(all) struct BvhEndSite {
+  path : String
+  offset : BvhVec3
+  depth : Int
+} derive(Eq, @debug.Debug)
+pub fn BvhEndSite::empty() -> Self
+pub fn BvhEndSite::new(String, BvhVec3, Int) -> Self
+
+pub(all) struct BvhError {
+  kind : BvhErrorKind
+  line : Int
+  column : Int
+  token : String
+  message : String
+} derive(Eq, @debug.Debug)
+pub fn BvhError::code(Self) -> String
+pub fn BvhError::is_error(Self) -> Bool
+pub fn BvhError::new(BvhErrorKind, String, line? : Int, column? : Int, token? : String) -> Self
+pub fn BvhError::none() -> Self
+
+pub(all) enum BvhErrorKind {
+  ErrorNone
+  ErrorEmptyInput
+  ErrorUnexpectedToken
+  ErrorUnexpectedEof
+  ErrorInvalidNumber
+  ErrorInvalidHierarchy
+  ErrorInvalidMotion
+  ErrorFrameWidthMismatch
+  ErrorUnsupportedFeature
+} derive(Eq, @debug.Debug)
+pub fn BvhErrorKind::code(Self) -> String
+
+pub(all) struct BvhFrameWindow {
+  start_frame : Int
+  end_frame : Int
+  frame_count : Int
+  duration_seconds : Double
+} derive(Eq, @debug.Debug)
+pub fn BvhFrameWindow::new(Int, Int, Double) -> Self
+
+pub(all) struct BvhImportDecision {
+  profile_name : String
+  accepted : Bool
+  action : String
+  quality : BvhQualityReport
+  issues : Array[BvhValidationIssue]
+} derive(Eq, @debug.Debug)
+pub fn BvhImportDecision::error_count(Self) -> Int
+pub fn BvhImportDecision::issue_count(Self) -> Int
+pub fn BvhImportDecision::ok(Self) -> Bool
+pub fn BvhImportDecision::warning_count(Self) -> Int
+
+pub(all) struct BvhImportProfile {
+  kind : BvhImportProfileKind
+  name : String
+  max_joint_count : Int
+  max_depth : Int
+  max_duration_seconds : Double
+  min_frame_rate : Double
+  max_frame_rate : Double
+  max_root_speed : Double
+  max_root_teleport : Double
+  min_quality_score : Int
+  require_root_position : Bool
+  allow_unknown_channels : Bool
+  allow_child_position_channels : Bool
+  require_loop_closure : Bool
+} derive(Eq, @debug.Debug)
+pub fn BvhImportProfile::new(BvhImportProfileKind, String, max_joint_count? : Int, max_depth? : Int, max_duration_seconds? : Double, min_frame_rate? : Double, max_frame_rate? : Double, max_root_speed? : Double, max_root_teleport? : Double, min_quality_score? : Int, require_root_position? : Bool, allow_unknown_channels? : Bool, allow_child_position_channels? : Bool, require_loop_closure? : Bool) -> Self
+
+pub(all) enum BvhImportProfileKind {
+  ProfileUnity
+  ProfileBlender
+  ProfileStrictCI
+  ProfilePreview
+} derive(Eq, @debug.Debug)
+pub fn BvhImportProfileKind::to_string(Self) -> String
+
+pub(all) enum BvhIssueSeverity {
+  IssueError
+  IssueWarning
+  IssueInfo
+} derive(Eq, @debug.Debug)
+pub fn BvhIssueSeverity::to_string(Self) -> String
+
+pub(all) struct BvhJoint {
+  name : String
+  path : String
+  kind : BvhJointKind
+  offset : BvhVec3
+  channels : Array[BvhChannel]
+  channel_start : Int
+  channel_count : Int
+  depth : Int
+  children : Array[BvhJoint]
+  end_sites : Array[BvhEndSite]
+} derive(Eq, @debug.Debug)
+pub fn BvhJoint::empty() -> Self
+pub fn BvhJoint::has_channel(Self, BvhChannel) -> Bool
+pub fn BvhJoint::is_root(Self) -> Bool
+pub fn BvhJoint::position_channel_count(Self) -> Int
+pub fn BvhJoint::rotation_channel_count(Self) -> Int
+
+pub(all) enum BvhJointKind {
+  JointRoot
+  JointRegular
+} derive(Eq, @debug.Debug)
+pub fn BvhJointKind::to_string(Self) -> String
+
+pub(all) struct BvhMotion {
+  frame_count : Int
+  frame_time : Double
+  channel_count : Int
+  frames : Array[Array[Double]]
+} derive(Eq, @debug.Debug)
+pub fn BvhMotion::duration_seconds(Self) -> Double
+pub fn BvhMotion::empty() -> Self
+pub fn BvhMotion::is_empty(Self) -> Bool
+
+pub(all) struct BvhParseResult {
+  ok : Bool
+  document : BvhDocument
+  error : BvhError
+} derive(Eq, @debug.Debug)
+pub fn BvhParseResult::failure(BvhError) -> Self
+pub fn BvhParseResult::is_ok(Self) -> Bool
+pub fn BvhParseResult::success(BvhDocument) -> Self
+
+pub(all) struct BvhPoseSample {
+  frame_index : Int
+  root_position : BvhVec3
+  root_delta_from_first : BvhVec3
+} derive(Eq, @debug.Debug)
+pub fn BvhPoseSample::new(Int, BvhVec3, BvhVec3) -> Self
+
+pub(all) enum BvhQualityGrade {
+  QualityExcellent
+  QualityUsable
+  QualityNeedsReview
+  QualityBlocked
+} derive(Eq, @debug.Debug)
+pub fn BvhQualityGrade::recommended_action(Self) -> String
+pub fn BvhQualityGrade::to_string(Self) -> String
+
+pub(all) struct BvhQualityReport {
+  grade : BvhQualityGrade
+  score : Int
+  signals : Array[BvhQualitySignal]
+  recommended_action : String
+} derive(Eq, @debug.Debug)
+pub fn BvhQualityReport::new(Int, Array[BvhQualitySignal]) -> Self
+pub fn BvhQualityReport::ok_for_import(Self) -> Bool
+
+pub(all) struct BvhQualitySignal {
+  severity : BvhIssueSeverity
+  code : String
+  score_delta : Int
+  message : String
+} derive(Eq, @debug.Debug)
+pub fn BvhQualitySignal::new(BvhIssueSeverity, String, Int, String) -> Self
+
+pub(all) struct BvhReport {
+  ok : Bool
+  summary : String
+  stats : BvhStats
+  validation : BvhValidationReport
+  error_code : String
+} derive(Eq, @debug.Debug)
+pub fn BvhReport::failure(BvhError) -> Self
+pub fn BvhReport::success(String, BvhStats, BvhValidationReport) -> Self
+
+pub(all) enum BvhReportFormat {
+  ReportText
+  ReportJson
+  ReportCsv
+} derive(Eq, @debug.Debug)
+
+pub(all) struct BvhRetargetMapEntry {
+  source_path : String
+  target_path : String
+  source_channel_count : Int
+  target_channel_count : Int
+  channel_compatible : Bool
+  notes : String
+} derive(Eq, @debug.Debug)
+pub fn BvhRetargetMapEntry::new(String, String, Int, Int) -> Self
+
+pub(all) struct BvhRootTeleport {
+  frame_index : Int
+  distance : Double
+  threshold : Double
+} derive(Eq, @debug.Debug)
+pub fn BvhRootTeleport::new(Int, Double, Double) -> Self
+
+pub(all) struct BvhRuntimeManifest {
+  package_name : String
+  version : String
+  supported_format : String
+  entries : Array[BvhSupportEntry]
+} derive(Eq, @debug.Debug)
+
+pub(all) struct BvhSkeletonBone {
+  path : String
+  parent_path : String
+  name : String
+  depth : Int
+  offset : BvhVec3
+  offset_length : Double
+  channel_count : Int
+  has_end_site : Bool
+} derive(Eq, @debug.Debug)
+pub fn BvhSkeletonBone::new(String, String, String, Int, BvhVec3, Int, Bool) -> Self
+
+pub(all) struct BvhSkeletonDiff {
+  compatible : Bool
+  matched_paths : Array[String]
+  missing_paths : Array[String]
+  extra_paths : Array[String]
+  channel_mismatch_paths : Array[String]
+  offset_warning_paths : Array[String]
+} derive(Eq, @debug.Debug)
+pub fn BvhSkeletonDiff::issue_count(Self) -> Int
+pub fn BvhSkeletonDiff::new(Array[String], Array[String], Array[String], Array[String], Array[String]) -> Self
+
+pub(all) struct BvhSkeletonSummary {
+  root_name : String
+  bone_count : Int
+  leaf_count : Int
+  end_site_count : Int
+  max_depth : Int
+  total_offset_length : Double
+  signature : String
+} derive(Eq, @debug.Debug)
+pub fn BvhSkeletonSummary::empty() -> Self
+
+pub(all) struct BvhSpeedSample {
+  frame_index : Int
+  seconds : Double
+  distance_from_previous : Double
+  speed_units_per_second : Double
+} derive(Eq, @debug.Debug)
+pub fn BvhSpeedSample::new(Int, Double, Double, Double) -> Self
+
+pub(all) struct BvhStats {
+  joint_count : Int
+  end_site_count : Int
+  max_depth : Int
+  channel_count : Int
+  frame_count : Int
+  frame_time : Double
+  duration_seconds : Double
+  root_motion_distance : Double
+} derive(Eq, @debug.Debug)
+pub fn BvhStats::empty() -> Self
+
+pub(all) struct BvhSupportEntry {
+  feature : String
+  status : String
+  notes : String
+} derive(Eq, @debug.Debug)
+pub fn BvhSupportEntry::new(String, String, String) -> Self
+
+pub(all) struct BvhToken {
+  kind : BvhTokenKind
+  text : String
+  line : Int
+  column : Int
+} derive(Eq, @debug.Debug)
+pub fn BvhToken::is_text(Self, String) -> Bool
+pub fn BvhToken::new(BvhTokenKind, String, Int, Int) -> Self
+
+pub(all) enum BvhTokenKind {
+  TokenWord
+  TokenOpenBrace
+  TokenCloseBrace
+} derive(Eq, @debug.Debug)
+
+pub(all) struct BvhTokenizeResult {
+  ok : Bool
+  tokens : Array[BvhToken]
+  error : BvhError
+} derive(Eq, @debug.Debug)
+pub fn BvhTokenizeResult::failure(BvhError) -> Self
+pub fn BvhTokenizeResult::success(Array[BvhToken]) -> Self
+
+pub(all) struct BvhUnityClipPlan {
+  clip_name : String
+  frame_rate : Double
+  duration_seconds : Double
+  root_joint : String
+  joint_paths : Array[String]
+  root_motion_delta : BvhVec3
+  warnings : Array[String]
+} derive(Eq, @debug.Debug)
+
+pub(all) struct BvhValidationIssue {
+  severity : BvhIssueSeverity
+  path : String
+  code : String
+  message : String
+} derive(Eq, @debug.Debug)
+pub fn BvhValidationIssue::error(String, String, path? : String) -> Self
+pub fn BvhValidationIssue::info(String, String, path? : String) -> Self
+pub fn BvhValidationIssue::new(BvhIssueSeverity, String, String, path? : String) -> Self
+pub fn BvhValidationIssue::warning(String, String, path? : String) -> Self
+
+pub(all) struct BvhValidationReport {
+  issues : Array[BvhValidationIssue]
+  error_count : Int
+  warning_count : Int
+  info_count : Int
+} derive(Eq, @debug.Debug)
+pub fn BvhValidationReport::new(Array[BvhValidationIssue]) -> Self
+pub fn BvhValidationReport::ok(Self) -> Bool
+
+pub(all) struct BvhVec3 {
+  x : Double
+  y : Double
+  z : Double
+} derive(Eq, @debug.Debug)
+pub fn BvhVec3::add(Self, Self) -> Self
+pub fn BvhVec3::magnitude(Self) -> Double
+pub fn BvhVec3::new(Double, Double, Double) -> Self
+pub fn BvhVec3::scale(Self, Double) -> Self
+pub fn BvhVec3::sub(Self, Self) -> Self
+pub fn BvhVec3::to_csv(Self) -> String
+pub fn BvhVec3::zero() -> Self
+
+// Type aliases
+
+// Traits

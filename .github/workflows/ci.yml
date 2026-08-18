@@ -1,0 +1,65 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  moonbit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Install MoonBit
+        run: |
+          curl -fsSL https://cli.moonbitlang.com/install/unix.sh | bash
+          echo "$HOME/.moon/bin" >> "$GITHUB_PATH"
+
+      - name: Show MoonBit Version
+        run: moon version --all
+
+      - name: Check All Targets
+        run: moon check --deny-warn --target all
+
+      - name: Build
+        run: moon build
+
+      - name: Test All Targets
+        run: moon test --deny-warn --target all
+
+      - name: Check Formatting
+        run: moon fmt --check
+
+      - name: Check Public API Snapshot
+        run: |
+          moon info
+          git diff --exit-code -- '*.mbti'
+
+      - name: Run CLI
+        run: moon run cmd/main
+
+      - name: Run CLI JSON
+        run: moon run cmd/main -- --json
+
+      - name: Run CLI CSV
+        run: moon run cmd/main -- --csv
+
+      - name: Run CLI Quality
+        run: moon run cmd/main -- --quality --json
+
+      - name: Run CLI Profiles
+        run: moon run cmd/main -- --profiles --csv
+
+      - name: Run Basic Example
+        run: moon run examples/basic
