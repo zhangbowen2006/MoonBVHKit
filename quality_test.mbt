@@ -44,6 +44,46 @@ test "quality report text and json are exportable" {
 }
 
 ///|
+test "JUnit quality report represents a clean asset" {
+  let report = @moonbvhkit.quality_report_from_bvh(
+    @moonbvhkit.fixture_walk_bvh(),
+  )
+  let xml = @moonbvhkit.quality_report_to_junit_xml(report)
+  assert_true(xml.find("tests=\"1\"") != None)
+  assert_true(xml.find("failures=\"0\"") != None)
+  assert_true(xml.find("<testcase name=\"quality\"") != None)
+}
+
+///|
+test "JUnit quality report maps parser errors to failures" {
+  let report = @moonbvhkit.quality_report_from_bvh(
+    @moonbvhkit.fixture_invalid_frame_width(),
+  )
+  let xml = @moonbvhkit.quality_report_to_junit_xml(report)
+  assert_true(xml.find("failures=\"1\"") != None)
+  assert_true(xml.find("<failure type=\"error\"") != None)
+}
+
+///|
+test "JUnit quality report escapes signal and suite text" {
+  let report = @moonbvhkit.BvhQualityReport::new(0, [
+    @moonbvhkit.BvhQualitySignal::new(
+      @moonbvhkit.IssueError,
+      "bad<tag>",
+      -100,
+      "unsafe & \"quoted\" value",
+    ),
+  ])
+  let xml = @moonbvhkit.quality_report_to_junit_xml(
+    report,
+    suite_name="asset<&>",
+  )
+  assert_true(xml.find("asset&lt;&amp;&gt;") != None)
+  assert_true(xml.find("bad&lt;tag&gt;") != None)
+  assert_true(xml.find("unsafe &amp; &quot;quoted&quot; value") != None)
+}
+
+///|
 test "quality action helper returns stable import action" {
   assert_eq(
     @moonbvhkit.quality_action_for_bvh(@moonbvhkit.fixture_walk_bvh()),

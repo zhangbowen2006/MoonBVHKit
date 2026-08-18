@@ -160,6 +160,8 @@ pub fn quality_report_to_csv(BvhQualityReport) -> String
 
 pub fn quality_report_to_json(BvhQualityReport) -> String
 
+pub fn quality_report_to_junit_xml(BvhQualityReport, suite_name? : String) -> String
+
 pub fn quality_report_to_text(BvhQualityReport) -> String
 
 pub fn quality_signal_to_json(BvhQualitySignal) -> String

@@ -154,6 +154,7 @@ Helpers:
 - `quality_report_to_text(report)`
 - `quality_report_to_json(report)`
 - `quality_report_to_csv(report)`
+- `quality_report_to_junit_xml(report, suite_name="moonbvhkit-quality")`
 - `quality_action_for_bvh(input)`
 
 ## Import Profiles

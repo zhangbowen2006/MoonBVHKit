@@ -234,6 +234,75 @@ pub fn quality_report_to_csv(report : BvhQualityReport) -> String {
 }
 
 ///|
+fn xml_escape(text : String) -> String {
+  text
+  .replace_all(old="&", new="&amp;")
+  .replace_all(old="<", new="&lt;")
+  .replace_all(old=">", new="&gt;")
+  .replace_all(old="\"", new="&quot;")
+  .replace_all(old="'", new="&apos;")
+}
+
+///|
+fn quality_error_count(report : BvhQualityReport) -> Int {
+  for signal in report.signals; count = 0 {
+    if signal.severity == IssueError {
+      continue count + 1
+    } else {
+      continue count
+    }
+  } nobreak {
+    count
+  }
+}
+
+///|
+fn quality_signal_to_junit_case(signal : BvhQualitySignal) -> String {
+  let name = xml_escape(signal.code)
+  let message = xml_escape(signal.message)
+  let severity = signal.severity.to_string()
+  match signal.severity {
+    IssueError =>
+      (
+        $|<testcase name="\{name}" classname="moonbvhkit.quality"><failure type="\{severity}" message="\{message}">score delta \{signal.score_delta}</failure></testcase>
+      )
+    IssueWarning | IssueInfo =>
+      (
+        $|<testcase name="\{name}" classname="moonbvhkit.quality"><system-out>\{severity}: \{message}; score delta \{signal.score_delta}</system-out></testcase>
+      )
+  }
+}
+
+///|
+pub fn quality_report_to_junit_xml(
+  report : BvhQualityReport,
+  suite_name? : String = "moonbvhkit-quality",
+) -> String {
+  let cases : Array[String] = []
+  if report.signals.length() == 0 {
+    cases.push(
+      (
+        $|<testcase name="quality" classname="moonbvhkit.quality"/>,
+      ),
+    )
+  } else {
+    for signal in report.signals {
+      cases.push(quality_signal_to_junit_case(signal))
+    }
+  }
+  let test_count = if report.signals.length() == 0 {
+    1
+  } else {
+    report.signals.length()
+  }
+  let failures = quality_error_count(report)
+  let name = xml_escape(suite_name)
+  (
+    $|<?xml version="1.0" encoding="UTF-8"?><testsuite name="\{name}" tests="\{test_count}" failures="\{failures}" errors="0"><properties><property name="grade" value="\{report.grade.to_string()}"/><property name="score" value="\{report.score}"/><property name="action" value="\{report.recommended_action}"/></properties>\{cases.join("")}</testsuite>
+  )
+}
+
+///|
 pub fn quality_action_for_bvh(input : String) -> String {
   quality_report_from_bvh(input).recommended_action
 }
