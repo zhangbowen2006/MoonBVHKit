@@ -39,7 +39,18 @@ jobs:
         run: moon test --deny-warn --target all
 
       - name: Check Formatting
-        run: moon fmt --check
+        run: |
+          for attempt in 1 2 3; do
+            if moon fmt --check; then
+              exit 0
+            fi
+            if [ "$attempt" -lt 3 ]; then
+              delay=$((attempt * 10))
+              echo "moon fmt failed (attempt $attempt); retrying in ${delay}s"
+              sleep "$delay"
+            fi
+          done
+          exit 1
 
       - name: Check Public API Snapshot
         run: |
