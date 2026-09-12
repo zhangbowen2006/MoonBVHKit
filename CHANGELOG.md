@@ -1,5 +1,13 @@
 # Changelog
 
+## Unreleased - 2026-09-12
+
+- Corrected the public submission materials to identify 张博文 and
+  `zhangbowen2006` consistently.
+- Removed personal contact details from the public repository; the official
+  hackathon form is now the source of truth for phone and email information.
+- Documented the frozen Mooncakes publishing command and package-list check.
+
 ## 0.2.0 - 2026-08-18
 
 - Added root-motion bounds with min/max/size metrics and JSON/CSV exporters.

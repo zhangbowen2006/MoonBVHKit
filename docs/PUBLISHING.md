@@ -49,11 +49,16 @@ moon run examples/basic
 
 ## Publish
 
-After logging in to Mooncakes:
+After logging in to Mooncakes with the `zhangbowen2006` owner account:
 
 ```bash
+moon package --list
 moon publish --dry-run
-moon publish
+moon publish --frozen
 ```
 
-Do not publish until the GitHub repository URL is reachable publicly.
+Do not publish until the GitHub repository URL is reachable publicly and the
+working tree is clean. A successful publish must be confirmed by the returned
+Mooncakes version and the public manifest URL:
+
+<https://mooncakes.io/api/v0/manifest/zhangbowen2006/moonbvhkit>

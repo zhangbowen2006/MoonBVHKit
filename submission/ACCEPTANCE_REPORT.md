@@ -16,6 +16,7 @@
 | 功能边界与维护价值 | 通过 | README、`docs/ARCHITECTURE.md`、API 与集成文档明确说明 |
 | 开源与素材合规 | 通过 | 根目录 MIT License；`docs/PROVENANCE.md` 记录依赖、fixture 和生成文件来源 |
 | 作者与申请人一致 | 通过 | 仓库 owner、全部提交、维护账号与申请人均为张博文 / `zhangbowen2006` |
+| 公开身份信息合规 | 通过 | 公开材料只保留张博文和 `zhangbowen2006`；手机号、邮箱等联系方式通过报名表提交，不写入仓库 |
 
 ## 实测结果
 

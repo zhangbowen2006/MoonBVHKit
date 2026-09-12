@@ -4,7 +4,7 @@
 
 - 项目名称：MoonBVHKit：MoonBit 原生 BVH 动作捕捉解析、校验与资产管线工具
 - 参赛者：张博文
-- 联系方式：15614198610
+- 联系方式：通过 2026 年 9 月黑客松官方报名表提交；公开仓库不保存手机号或邮箱
 - GitHub 账号：`zhangbowen2006`
 - GitHub 仓库：<https://github.com/zhangbowen2006/MoonBVHKit>
 - Mooncakes：`zhangbowen2006/moonbvhkit@0.2.0`

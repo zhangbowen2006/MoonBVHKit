@@ -152,6 +152,10 @@ All fixtures in this repository are handwritten synthetic data and do not contai
 
 See [Source and Provenance](docs/PROVENANCE.md) for dependency, generated-file, fixture, and AI-assistance disclosure. The project is maintained by 张博文 through the GitHub account `zhangbowen2006`; author information is recorded in [AUTHORS.md](AUTHORS.md).
 
+Personal contact details are intentionally not stored in this public repository;
+the official hackathon registration form is the source of truth for contact
+information.
+
 ## License
 
 MIT.

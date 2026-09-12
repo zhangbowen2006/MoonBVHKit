@@ -84,3 +84,5 @@ test "parse a BVH clip" {
 - [最终验收报告](submission/ACCEPTANCE_REPORT.md)
 
 本项目为张博文原创的 MoonBit 实现，不是移植项目。仓库不包含复制的第三方代码、下载的动作资产或商业素材；测试 BVH 全部为手写合成数据。作者与维护信息见 [AUTHORS.md](AUTHORS.md)。
+
+个人联系方式不保存在公开仓库中，以 9 月黑客松官方报名表提交的信息为准。

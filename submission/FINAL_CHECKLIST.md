@@ -6,6 +6,7 @@
 - 公开仓库：<https://github.com/zhangbowen2006/MoonBVHKit>，默认分支 `main`。
 - Mooncakes：`zhangbowen2006/moonbvhkit@0.2.0`，已正式发布。
 - 开源许可证：MIT，位于仓库根目录。
+- 联系方式不写入公开仓库，仅通过 9 月黑客松官方报名表提交。
 
 ## 已完成材料
 
@@ -24,6 +25,7 @@ moon build
 moon test --deny-warn
 moon fmt --check
 moon info
+moon package --list
 moon run cmd/main
 moon run cmd/main -- --quality --json
 moon run cmd/main -- --profiles --csv
