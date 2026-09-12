@@ -550,7 +550,7 @@ pub(all) struct BvhNamedAsset {
 
 ///|
 pub fn BvhNamedAsset::new(name : String, source : String) -> BvhNamedAsset {
-  { name, source }
+  { name, source, }
 }
 
 ///|
@@ -588,7 +588,7 @@ pub fn evaluate_bvh_batch(
     } else {
       blocked_count += 1
     }
-    decisions.push({ asset_name: asset.name, decision })
+    decisions.push({ asset_name: asset.name, decision, })
   }
   {
     profile_name: profile.name,

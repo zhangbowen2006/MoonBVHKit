@@ -11,7 +11,7 @@ pub fn BvhSupportEntry::new(
   status : String,
   notes : String,
 ) -> BvhSupportEntry {
-  { feature, status, notes }
+  { feature, status, notes, }
 }
 
 ///|

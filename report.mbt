@@ -13,7 +13,7 @@ pub fn BvhReport::success(
   stats : BvhStats,
   validation : BvhValidationReport,
 ) -> BvhReport {
-  { ok: validation.ok(), summary, stats, validation, error_code: "" }
+  { ok: validation.ok(), summary, stats, validation, error_code: "", }
 }
 
 ///|

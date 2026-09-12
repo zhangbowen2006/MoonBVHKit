@@ -34,7 +34,7 @@ pub fn BvhChannelRange::new(
   min : Double,
   max : Double,
 ) -> BvhChannelRange {
-  { path, channel, index, min, max, span: max - min }
+  { path, channel, index, min, max, span: max - min, }
 }
 
 ///|
@@ -126,7 +126,7 @@ pub fn BvhPoseSample::new(
   root_position : BvhVec3,
   root_delta_from_first : BvhVec3,
 ) -> BvhPoseSample {
-  { frame_index, root_position, root_delta_from_first }
+  { frame_index, root_position, root_delta_from_first, }
 }
 
 ///|

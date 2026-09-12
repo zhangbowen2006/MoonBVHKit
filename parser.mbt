@@ -8,7 +8,7 @@ priv struct BvhParser {
 
 ///|
 fn BvhParser::new(tokens : Array[BvhToken]) -> BvhParser {
-  { tokens, index: 0, channel_cursor: 0, error: BvhError::none() }
+  { tokens, index: 0, channel_cursor: 0, error: BvhError::none(), }
 }
 
 ///|
@@ -343,7 +343,7 @@ fn BvhParser::parse_motion(self : BvhParser) -> BvhMotion {
     }
     frames.push(values)
   }
-  { frame_count, frame_time, channel_count: self.channel_cursor, frames }
+  { frame_count, frame_time, channel_count: self.channel_cursor, frames, }
 }
 
 ///|
@@ -359,7 +359,7 @@ fn BvhParser::parse_document(
   }
   let root = self.parse_joint_node(JointRoot, "", 0)
   let motion = self.parse_motion()
-  { root, motion, source_length, token_count: self.tokens.length() }
+  { root, motion, source_length, token_count: self.tokens.length(), }
 }
 
 ///|

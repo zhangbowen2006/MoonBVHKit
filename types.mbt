@@ -38,7 +38,7 @@ pub(all) struct BvhError {
 
 ///|
 pub fn BvhError::none() -> BvhError {
-  { kind: ErrorNone, line: 0, column: 0, token: "", message: "" }
+  { kind: ErrorNone, line: 0, column: 0, token: "", message: "", }
 }
 
 ///|
@@ -49,7 +49,7 @@ pub fn BvhError::new(
   column? : Int = 0,
   token? : String = "",
 ) -> BvhError {
-  { kind, line, column, token, message }
+  { kind, line, column, token, message, }
 }
 
 ///|
@@ -84,7 +84,7 @@ pub fn BvhToken::new(
   line : Int,
   column : Int,
 ) -> BvhToken {
-  { kind, text, line, column }
+  { kind, text, line, column, }
 }
 
 ///|
@@ -103,12 +103,12 @@ pub(all) struct BvhTokenizeResult {
 pub fn BvhTokenizeResult::success(
   tokens : Array[BvhToken],
 ) -> BvhTokenizeResult {
-  { ok: true, tokens, error: BvhError::none() }
+  { ok: true, tokens, error: BvhError::none(), }
 }
 
 ///|
 pub fn BvhTokenizeResult::failure(error : BvhError) -> BvhTokenizeResult {
-  { ok: false, tokens: [], error }
+  { ok: false, tokens: [], error, }
 }
 
 ///|
@@ -205,27 +205,27 @@ pub(all) struct BvhVec3 {
 
 ///|
 pub fn BvhVec3::new(x : Double, y : Double, z : Double) -> BvhVec3 {
-  { x, y, z }
+  { x, y, z, }
 }
 
 ///|
 pub fn BvhVec3::zero() -> BvhVec3 {
-  { x: 0.0, y: 0.0, z: 0.0 }
+  { x: 0.0, y: 0.0, z: 0.0, }
 }
 
 ///|
 pub fn BvhVec3::add(self : BvhVec3, other : BvhVec3) -> BvhVec3 {
-  { x: self.x + other.x, y: self.y + other.y, z: self.z + other.z }
+  { x: self.x + other.x, y: self.y + other.y, z: self.z + other.z, }
 }
 
 ///|
 pub fn BvhVec3::sub(self : BvhVec3, other : BvhVec3) -> BvhVec3 {
-  { x: self.x - other.x, y: self.y - other.y, z: self.z - other.z }
+  { x: self.x - other.x, y: self.y - other.y, z: self.z - other.z, }
 }
 
 ///|
 pub fn BvhVec3::scale(self : BvhVec3, factor : Double) -> BvhVec3 {
-  { x: self.x * factor, y: self.y * factor, z: self.z * factor }
+  { x: self.x * factor, y: self.y * factor, z: self.z * factor, }
 }
 
 ///|
@@ -251,12 +251,12 @@ pub fn BvhEndSite::new(
   offset : BvhVec3,
   depth : Int,
 ) -> BvhEndSite {
-  { path, offset, depth }
+  { path, offset, depth, }
 }
 
 ///|
 pub fn BvhEndSite::empty() -> BvhEndSite {
-  { path: "", offset: BvhVec3::zero(), depth: 0 }
+  { path: "", offset: BvhVec3::zero(), depth: 0, }
 }
 
 ///|
@@ -341,7 +341,7 @@ pub(all) struct BvhMotion {
 
 ///|
 pub fn BvhMotion::empty() -> BvhMotion {
-  { frame_count: 0, frame_time: 0.0, channel_count: 0, frames: [] }
+  { frame_count: 0, frame_time: 0.0, channel_count: 0, frames: [], }
 }
 
 ///|
@@ -408,12 +408,12 @@ pub(all) struct BvhParseResult {
 
 ///|
 pub fn BvhParseResult::success(document : BvhDocument) -> BvhParseResult {
-  { ok: true, document, error: BvhError::none() }
+  { ok: true, document, error: BvhError::none(), }
 }
 
 ///|
 pub fn BvhParseResult::failure(error : BvhError) -> BvhParseResult {
-  { ok: false, document: BvhDocument::empty(), error }
+  { ok: false, document: BvhDocument::empty(), error, }
 }
 
 ///|
@@ -452,7 +452,7 @@ pub fn BvhValidationIssue::new(
   message : String,
   path? : String = "$",
 ) -> BvhValidationIssue {
-  { severity, path, code, message }
+  { severity, path, code, message, }
 }
 
 ///|
@@ -504,7 +504,7 @@ pub fn BvhValidationReport::new(
       IssueInfo => infos += 1
     }
   }
-  { issues, error_count: errors, warning_count: warnings, info_count: infos }
+  { issues, error_count: errors, warning_count: warnings, info_count: infos, }
 }
 
 ///|

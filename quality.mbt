@@ -41,7 +41,7 @@ pub fn BvhQualitySignal::new(
   score_delta : Int,
   message : String,
 ) -> BvhQualitySignal {
-  { severity, code, score_delta, message }
+  { severity, code, score_delta, message, }
 }
 
 ///|
@@ -76,7 +76,7 @@ pub fn BvhQualityReport::new(
   } else {
     QualityBlocked
   }
-  { grade, score, signals, recommended_action: grade.recommended_action() }
+  { grade, score, signals, recommended_action: grade.recommended_action(), }
 }
 
 ///|

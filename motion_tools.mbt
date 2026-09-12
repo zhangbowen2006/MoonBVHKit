@@ -279,7 +279,7 @@ pub fn BvhSpeedSample::new(
   distance_from_previous : Double,
   speed_units_per_second : Double,
 ) -> BvhSpeedSample {
-  { frame_index, seconds, distance_from_previous, speed_units_per_second }
+  { frame_index, seconds, distance_from_previous, speed_units_per_second, }
 }
 
 ///|
@@ -346,7 +346,7 @@ pub fn BvhRootTeleport::new(
   distance : Double,
   threshold : Double,
 ) -> BvhRootTeleport {
-  { frame_index, distance, threshold }
+  { frame_index, distance, threshold, }
 }
 
 ///|
@@ -449,7 +449,7 @@ pub fn BvhChannelMean::new(
   mean : Double,
   sample_count : Int,
 ) -> BvhChannelMean {
-  { index, name, mean, sample_count }
+  { index, name, mean, sample_count, }
 }
 
 ///|
